@@ -1,4 +1,5 @@
 from rest_framework import generics, filters
+from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
 from test_app.models import Customer
@@ -20,3 +21,6 @@ class CustomerListView(generics.ListCreateAPIView):
     ordering_fields = ['id', 'last_name', 'email']
     ordering = ['id']
     
+
+def customer_list(request):
+    return render(request, 'customers/list.html')

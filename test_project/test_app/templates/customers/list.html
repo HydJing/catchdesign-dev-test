@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Customer List</h1>
+    <ul id="customer-list"></ul>
+
+    <script>
+        // Asynchronous request to load customers
+        $(document).ready(function() {
+            $.getJSON('/test_app/api/customers/', function(data) {
+                let customerList = $('#customer-list');
+                data.results.forEach(function(customer) {
+                    customerList.append('<li>' + customer.first_name + ' ' + customer.last_name + '</li>');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
